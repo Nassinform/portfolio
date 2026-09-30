@@ -36,12 +36,103 @@
     .skills-info .skills-category:first-child {
       margin-top: 0;
     }
+
+    /* ===== Vidéos dans le portfolio : taille complète, sans bordure ===== */
+    .portfolio-item-img {
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .portfolio-item-img video {
+      width: 100%;
+      height: 560px;
+      display: block;
+    }
+
+    /* Lien cliquable autour de la vidéo */
+    .portfolio-item-img .video-link {
+      position: relative;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Bouton "play" superposé */
+    .portfolio-item-img .video-link .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 24px;
+      line-height: 64px;
+      text-align: center;
+      pointer-events: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .portfolio-item-img .video-link:hover .play-icon {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    /* ===== Lightbox vidéo maison (sans bordure, sans bouton close) ===== */
+    .video-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99999;
+    }
+
+    .video-lightbox.active {
+      display: block;
+    }
+
+    .video-lightbox-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: pointer;
+    }
+
+    .video-lightbox-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 92vw;
+      max-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .video-lightbox-content video {
+      display: block;
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      background: #000;
+      pointer-events: auto;
+    }
   </style>
 </head>
 
 <body>
   <!-- Fond animé -->
-  <div class="lm-animated-bg" style="background-image: url(img/main_bg.png);"></div>
+  <div class="lm-animated-bg" style="background-image: url(img/main_bg.com.png);"></div>
   <!-- /Fond animé -->
 
   <!-- Animation de chargement -->
@@ -59,7 +150,7 @@
       <header id="site_header" class="header mobile-menu-hide">
         <div class="header-content">
           <div class="header-photo">
-            <img src="img/main_photo.jpg" alt="Nassim Merri">
+            <img src="img/main_photo.com.png" alt="Nassim Merri">
           </div>
           <div class="header-titles">
             <h2>Nassim Merri</h2>
@@ -524,7 +615,6 @@
                     <!-- ================= FRONTEND ================= -->
                     <h3 class="skills-category">Frontend</h3>
 
-                    <!-- Compétence : HTML / CSS / JavaScript / TypeScript -->
                     <div class="skill clearfix">
                       <h4>HTML / CSS / JavaScript / TypeScript</h4>
                       <div class="skill-value">90%</div>
@@ -533,7 +623,6 @@
                       <div class="skill-percentage" style="width: 90%;"></div>
                     </div>
 
-                    <!-- Compétence : VueJS / React -->
                     <div class="skill clearfix">
                       <h4>VueJS / React</h4>
                       <div class="skill-value">75%</div>
@@ -545,7 +634,6 @@
                     <!-- ================= BACKEND ================= -->
                     <h3 class="skills-category">Backend</h3>
 
-                    <!-- Compétence : PHP / Laravel / Symfony -->
                     <div class="skill clearfix">
                       <h4>PHP / Laravel / Symfony</h4>
                       <div class="skill-value">90%</div>
@@ -554,7 +642,6 @@
                       <div class="skill-percentage" style="width: 90%;"></div>
                     </div>
 
-                    <!-- Compétence : Python / Java -->
                     <div class="skill clearfix">
                       <h4>Python / Java</h4>
                       <div class="skill-value">75%</div>
@@ -566,7 +653,6 @@
                     <!-- ================= MOBILE ================= -->
                     <h3 class="skills-category">Mobile</h3>
 
-                    <!-- Compétence : Flutter / Dart -->
                     <div class="skill clearfix">
                       <h4>Flutter / Dart</h4>
                       <div class="skill-value">90%</div>
@@ -578,7 +664,6 @@
                     <!-- ================= BASES DE DONNÉES ================= -->
                     <h3 class="skills-category">Bases de données</h3>
 
-                    <!-- Compétence : BDD SQL -->
                     <div class="skill clearfix">
                       <h4>BDD (MySQL, PostgreSQL, SQLite)</h4>
                       <div class="skill-value">90%</div>
@@ -587,7 +672,6 @@
                       <div class="skill-percentage" style="width: 90%;"></div>
                     </div>
 
-                    <!-- Compétence : NoSQL -->
                     <div class="skill clearfix">
                       <h4>NoSQL (MongoDB, Redis)</h4>
                       <div class="skill-value">70%</div>
@@ -599,7 +683,6 @@
                     <!-- ================= API ================= -->
                     <h3 class="skills-category">API</h3>
 
-                    <!-- Compétence : API REST / GraphQL / Postman -->
                     <div class="skill clearfix">
                       <h4>API REST / GraphQL / Postman</h4>
                       <div class="skill-value">85%</div>
@@ -611,7 +694,6 @@
                     <!-- ================= DEVOPS / CLOUD ================= -->
                     <h3 class="skills-category">DevOps / Cloud</h3>
 
-                    <!-- Compétence : Git / GitHub / GitLab -->
                     <div class="skill clearfix">
                       <h4>Git / GitHub / GitLab</h4>
                       <div class="skill-value">90%</div>
@@ -620,7 +702,6 @@
                       <div class="skill-percentage" style="width: 90%;"></div>
                     </div>
 
-                    <!-- Compétence : Docker / VMware / VirtualBox -->
                     <div class="skill clearfix">
                       <h4>Docker / VMware / VirtualBox</h4>
                       <div class="skill-value">75%</div>
@@ -629,7 +710,6 @@
                       <div class="skill-percentage" style="width: 75%;"></div>
                     </div>
 
-                    <!-- Compétence : CI/CD -->
                     <div class="skill clearfix">
                       <h4>CI/CD (GitHub Actions, GitLab CI, Jenkins)</h4>
                       <div class="skill-value">70%</div>
@@ -638,7 +718,6 @@
                       <div class="skill-percentage" style="width: 70%;"></div>
                     </div>
 
-                    <!-- Compétence : Cloud -->
                     <div class="skill clearfix">
                       <h4>Cloud (AWS, Azure, GCP)</h4>
                       <div class="skill-value">65%</div>
@@ -650,7 +729,6 @@
                     <!-- ================= SYSTÈMES ================= -->
                     <h3 class="skills-category">Systèmes</h3>
 
-                    <!-- Compétence : Windows et Linux -->
                     <div class="skill clearfix">
                       <h4>Windows et Linux (Ubuntu, Fedora, Kali)</h4>
                       <div class="skill-value">85%</div>
@@ -662,7 +740,6 @@
                     <!-- ================= SÉCURITÉ ================= -->
                     <h3 class="skills-category">Sécurité</h3>
 
-                    <!-- Compétence : Sécurité web -->
                     <div class="skill clearfix">
                       <h4>Sécurité web (OWASP, JWT, OAuth2)</h4>
                       <div class="skill-value">90%</div>
@@ -674,7 +751,6 @@
                     <!-- ================= TESTS ================= -->
                     <h3 class="skills-category">Tests / Qualité</h3>
 
-                    <!-- Compétence : Tests -->
                     <div class="skill clearfix">
                       <h4>Tests (PHPUnit, Jest, Cypress)</h4>
                       <div class="skill-value">75%</div>
@@ -710,36 +786,148 @@
                         <a class="filter btn btn-sm btn-link" data-group="category_all">Tous</a>
                       </li>
                       <li>
-                        <a class="filter btn btn-sm btn-link" data-group="category_web">Web</a>
+                        <a class="filter btn btn-sm btn-link" data-group="category_web">Sites Web</a>
                       </li>
                       <li>
-                        <a class="filter btn btn-sm btn-link" data-group="category_mobile">Mobile</a>
+                        <a class="filter btn btn-sm btn-link" data-group="category_video">Vidéos</a>
                       </li>
                     </ul>
 
                     <!-- Grille du portfolio -->
                     <div class="portfolio-grid three-columns">
 
+                      <!-- ================= PROJETS WEB ================= -->
+
+                      <!-- Projet 1 : BIM Digital Zone -->
                       <figure class="item standard" data-groups='["category_all", "category_web"]'>
                         <div class="portfolio-item-img">
-                          <img src="img/portfolio/2.jpg" alt="Projet Web" title="" />
-                          <a href="portfolio-1.html" class="ajax-page-load"></a>
+                          <img src="img/bimdigitalzone.com.png" alt="BIM Digital Zone" title="BIM Digital Zone" />
+                          <a href="https://bimdigitalzone.com" target="_blank" rel="noopener noreferrer"></a>
                         </div>
-
-                        <i class="far fa-file-alt"></i>
-                        <h4 class="name">Projet Web</h4>
-                        <span class="category">Web</span>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">BIM Digital Zone</h4>
+                        <span class="category">Site Web</span>
                       </figure>
 
-                      <figure class="item lbimage" data-groups='["category_all", "category_mobile"]'>
+                      <!-- Projet 2 : Forum BIM Digital Zone -->
+                      <figure class="item standard" data-groups='["category_all", "category_web"]'>
                         <div class="portfolio-item-img">
-                          <img src="img/portfolio/5.jpg" alt="Application Mobile" title="" />
-                          <a class="lightbox" title="Application Mobile" href="img/portfolio/full/5.jpg"></a>
+                          <img src="img/forum.bimdigitalzone.com.png" alt="Forum BIM Digital Zone" title="Forum BIM Digital Zone" />
+                          <a href="https://forum.bimdigitalzone.com" target="_blank" rel="noopener noreferrer"></a>
                         </div>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">Forum BIM Digital Zone</h4>
+                        <span class="category">Site Web</span>
+                      </figure>
 
-                        <i class="far fa-image"></i>
-                        <h4 class="name">Application Mobile</h4>
-                        <span class="category">Mobile</span>
+                      <!-- Projet 3 : Homa BIM -->
+                      <figure class="item standard" data-groups='["category_all", "category_web"]'>
+                        <div class="portfolio-item-img">
+                          <img src="img/homabim.com.png" alt="Homa BIM" title="Homa BIM" />
+                          <a href="https://homabim.com" target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">Homa BIM</h4>
+                        <span class="category">Site Web</span>
+                      </figure>
+
+                      <!-- Projet 4 : Houloul Herbalance -->
+                      <figure class="item standard" data-groups='["category_all", "category_web"]'>
+                        <div class="portfolio-item-img">
+                          <img src="img/houloul-herbalance-dz.com.png" alt="Houloul Herbalance" title="Houloul Herbalance" />
+                          <a href="https://houloul-herbalance-dz.com" target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">Houloul Herbalance</h4>
+                        <span class="category">Site Web</span>
+                      </figure>
+
+                      <!-- Projet 5 : IDF Rénovation -->
+                      <figure class="item standard" data-groups='["category_all", "category_web"]'>
+                        <div class="portfolio-item-img">
+                          <img src="img/idf-renovation-rehabilitation.com.png" alt="IDF Rénovation" title="IDF Rénovation" />
+                          <a href="https://idf-renovation-rehabilitation.com" target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">IDF Rénovation</h4>
+                        <span class="category">Site Web</span>
+                      </figure>
+
+                      <!-- Projet 6 : ISO Déménagement -->
+                      <figure class="item standard" data-groups='["category_all", "category_web"]'>
+                        <div class="portfolio-item-img">
+                          <img src="img/iso-demenagement.com.png" alt="ISO Déménagement" title="ISO Déménagement" />
+                          <a href="https://iso-demenagement.com" target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                        <h4 class="name">ISO Déménagement</h4>
+                        <span class="category">Site Web</span>
+                      </figure>
+
+                      <!-- ================= VIDÉOS ================= -->
+
+                      <!-- Vidéo 1 : Homabim -->
+                      <figure class="item" data-groups='["category_all", "category_video"]'>
+                        <div class="portfolio-item-img">
+                          <a href="vid/homabim.mp4" class="video-link">
+                            <video preload="metadata" muted playsinline webkit-playsinline>
+                              <source src="vid/homabim.mp4" type="video/mp4">
+                              Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                            <span class="play-icon">&#9658;</span>
+                          </a>
+                        </div>
+                        <i class="fas fa-video"></i>
+                        <h4 class="name">Homabim</h4>
+                        <span class="category">Vidéo</span>
+                      </figure>
+
+                      <!-- Vidéo 2 : Al Bayan -->
+                      <figure class="item" data-groups='["category_all", "category_video"]'>
+                        <div class="portfolio-item-img">
+                          <a href="vid/al-bayan.mp4" class="video-link">
+                            <video preload="metadata" muted playsinline webkit-playsinline>
+                              <source src="vid/al-bayan.mp4" type="video/mp4">
+                              Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                            <span class="play-icon">&#9658;</span>
+                          </a>
+                        </div>
+                        <i class="fas fa-video"></i>
+                        <h4 class="name">Al Bayan</h4>
+                        <span class="category">Vidéo</span>
+                      </figure>
+
+                      <!-- Vidéo 3 : Bimdigitalzone -->
+                      <figure class="item" data-groups='["category_all", "category_video"]'>
+                        <div class="portfolio-item-img">
+                          <a href="vid/bib.mp4" class="video-link">
+                            <video preload="metadata" muted playsinline webkit-playsinline>
+                              <source src="vid/bib.mp4" type="video/mp4">
+                              Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                            <span class="play-icon">&#9658;</span>
+                          </a>
+                        </div>
+                        <i class="fas fa-video"></i>
+                        <h4 class="name">Bimdigitalzone</h4>
+                        <span class="category">Vidéo</span>
+                      </figure>
+
+                      <!-- Vidéo 4 : Bimdigitalzone (forum) -->
+                      <figure class="item" data-groups='["category_all", "category_video"]'>
+                        <div class="portfolio-item-img">
+                          <a href="vid/forum.mp4" class="video-link">
+                            <video preload="metadata" muted playsinline webkit-playsinline>
+                              <source src="vid/forum.mp4" type="video/mp4">
+                              Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                            <span class="play-icon">&#9658;</span>
+                          </a>
+                        </div>
+                        <i class="fas fa-video"></i>
+                        <h4 class="name">Bimdigitalzone (forum)</h4>
+                        <span class="category">Vidéo</span>
                       </figure>
 
                     </div>
@@ -783,17 +971,10 @@
                     <span class="lm-info-block-text"></span>
                   </div>
 
-                  <div class="lm-info-block gray-default">
-                    <i class="lnr lnr-checkmark-circle"></i>
-                    <h4>Disponible pour missions</h4>
-                    <span class="lm-info-block-value"></span>
-                    <span class="lm-info-block-text"></span>
-                  </div>
-
                 </div>
                 <!-- Fin coordonnées -->
 
-                <!-- Formulaire de contact -->
+                <!-- Carte -->
                 <div class="col-xs-12 col-sm-8">
                   <div id="map" class="map">
                     <div class="lmpixels-map">
@@ -802,7 +983,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Fin formulaire de contact -->
+                <!-- Fin carte -->
               </div>
 
             </div>
@@ -813,6 +994,15 @@
 
     </div>
   </div>
+
+  <!-- ===== Lightbox vidéo maison (sans bouton close) ===== -->
+  <div id="video-lightbox" class="video-lightbox">
+    <div class="video-lightbox-overlay"></div>
+    <div class="video-lightbox-content">
+      <video id="video-lightbox-player" controls playsinline webkit-playsinline></video>
+    </div>
+  </div>
+  <!-- ===== Fin lightbox vidéo ===== -->
 
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/modernizr.custom.js"></script>
@@ -828,6 +1018,52 @@
 
   <script src="js/validator.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- ===== Lightbox vidéo maison (fonctionne en file://) ===== -->
+  <script>
+    (function () {
+      var lightbox = document.getElementById('video-lightbox');
+      var player   = document.getElementById('video-lightbox-player');
+      var overlay  = lightbox.querySelector('.video-lightbox-overlay');
+
+      function openLightbox(src) {
+        player.src = src;
+        lightbox.classList.add('active');
+        var p = player.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(function () { /* silencieux */ });
+        }
+      }
+
+      function closeLightbox() {
+        try {
+          player.pause();
+        } catch (e) {}
+        player.removeAttribute('src');
+        player.load();
+        lightbox.classList.remove('active');
+      }
+
+      // Ouvre la popup au clic sur une vidéo
+      var links = document.querySelectorAll('.video-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function (e) {
+          e.preventDefault();
+          var src = this.getAttribute('href');
+          if (src) openLightbox(src);
+        });
+      }
+
+      // Fermeture : clic sur le fond noir ou touche Échap
+      overlay.addEventListener('click', closeLightbox);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>
