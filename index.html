@@ -127,6 +127,33 @@
       background: #000;
       pointer-events: auto;
     }
+
+    /* ===== Mobile : espacements harmonisés dans la page CV ===== */
+    @media only screen and (max-width: 767px) {
+
+      /* 1) On annule le padding du white-space-50 entre Diplômes et Expériences */
+      section[data-id="resume"] .col-sm-7 .white-space-50 {
+        padding-bottom: 0;
+      }
+
+      /* 2) On applique le même espace qu'aux Compétences */
+      section[data-id="resume"] .col-sm-7 .white-space-50+.block-title {
+        margin-top: 45px;
+        /* même valeur que Compétences */
+        margin-bottom: 25px;
+      }
+
+      /* 3) Compétences techniques : même espace */
+      section[data-id="resume"] .col-sm-5>.block-title {
+        margin-top: 45px;
+        margin-bottom: 25px;
+      }
+
+      /* 4) On évite une marge en trop sur le premier titre */
+      section[data-id="resume"] .col-sm-7>.block-title:first-child {
+        margin-top: 0;
+      }
+    }
   </style>
 </head>
 
@@ -437,7 +464,7 @@
               </div>
               <!-- Fin Atouts -->
 
-              <div class="white-space-30"></div>
+              <div class="white-space-50"></div>
 
               <!-- Centres d'intérêts -->
               <div class="row">
@@ -698,7 +725,7 @@
                     <h3 class="skills-category">Bases de données</h3>
 
                     <div class="skill clearfix">
-                      <h4>BDD (MySQL, PostgreSQL, SQLite)</h4>
+                      <h4>MySQL, PostgreSQL, SQLite</h4>
                       <div class="skill-value">90%</div>
                     </div>
                     <div class="skill-container">
@@ -752,7 +779,7 @@
                     </div>
 
                     <div class="skill clearfix">
-                      <h4>CI/CD (GitHub Actions, GitLab CI)</h4>
+                      <h4>CI/CD (GitHub, GitLab)</h4>
                       <div class="skill-value">70%</div>
                     </div>
                     <div class="skill-container">
@@ -798,7 +825,7 @@
                     <h3 class="skills-category">Sécurité</h3>
 
                     <div class="skill clearfix">
-                      <h4>Sécurité web (OWASP, JWT, OAuth2)</h4>
+                      <h4>Web (OWASP, JWT, OAuth2)</h4>
                       <div class="skill-value">90%</div>
                     </div>
                     <div class="skill-container">
